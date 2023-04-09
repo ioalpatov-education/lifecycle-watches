@@ -13,13 +13,25 @@ const watchesFormSchema = Yup.object({
     .required("Обязательное поле"),
 });
 
-const WatchesForm = () => {
+const WatchesForm = ({ onAddTimeZone }) => {
   const initialValues = {
     title: "",
     timeZone: "",
   };
 
-  const addTimeZone = () => {};
+  const addTimeZone = (values, actions) => {
+    const { title, timeZone } = values;
+
+    actions.resetForm();
+
+    const newTimeZone = {
+      title,
+      timeZone,
+      id: nanoid(),
+    };
+
+    onAddTimeZone(newTimeZone);
+  };
 
   return (
     <Formik
@@ -49,6 +61,10 @@ const WatchesForm = () => {
       </Form>
     </Formik>
   );
+};
+
+WatchesForm.propTypes = {
+  onAddTimeZone: PropTypes.func.isRequired,
 };
 
 export default WatchesForm;
