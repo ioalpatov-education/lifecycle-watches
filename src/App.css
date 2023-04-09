@@ -8,3 +8,39 @@
   align-items: center;
   height: 100vh;
 }
+
+.watches-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.watches-form {
+  display: flex;
+  gap: 2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+.form-field {
+  height: 40px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.watches-form__submit-btn {
+  background-color: transparent;
+  padding: 5px 30px;
+  margin-top: 32px;
+  height: 40px;
+  font-size: 14px;
+}
+
+.error-text {
+  color: #ff0000;
+  margin: 0;
+  font-size: 12px;
+}
