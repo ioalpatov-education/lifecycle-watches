@@ -95,18 +95,18 @@
 .second-hand {
   height: 50%;
   border: 1px dashed #000000;
-  transform: rotate(90deg);
+  /* transform: rotate(90deg); */
 }
 
 .minute-hand {
   height: 50%;
-  transform: rotate(0deg);
+  /* transform: rotate(0deg); */
 }
 
 .hour-hand {
   height: 40%;
   top: 10%;
-  transform: rotate(45deg);
+  /* transform: rotate(45deg); */
 }
 
 
