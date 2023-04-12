@@ -2,9 +2,11 @@ import WatchesForm from "./WatchesForm";
 import WatchesList from "./WatchesList";
 
 const Watches = () => {
+  const addTimeZone = (newTimeZone) => {};
+  
   return (
     <div className="watches-wrapper">
-      <WatchesForm />
+      <WatchesForm onAddTimeZone={addTimeZone} />
       <WatchesList />
     </div>
   );

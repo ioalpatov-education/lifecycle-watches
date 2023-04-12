@@ -44,3 +44,90 @@
   margin: 0;
   font-size: 12px;
 }
+
+.watches-list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 3rem;
+}
+
+.watch-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.watch {
+  position: relative;
+  width: 100px;
+  aspect-ratio: 1;
+  border: 1px solid #000000;
+  border-radius: 50%;
+}
+
+.watch__delete-btn {
+  position: absolute;
+  top: 20px;
+  right: -20px;
+  background-color: #ffffff;
+  border-radius: 50%;
+}
+
+.delete-btn__icon {
+  font-size: 16px !important;
+}
+
+.arrow {
+  width: 2px;
+  background-color: #000000;
+}
+
+.watch__hand {
+  position: absolute;
+  left: 50%;
+  transform-origin: 50% 100%;
+}
+
+
+.second-hand {
+  height: 50%;
+  border: 1px dashed #000000;
+  transform: rotate(90deg);
+}
+
+.minute-hand {
+  height: 50%;
+  transform: rotate(0deg);
+}
+
+.hour-hand {
+  height: 40%;
+  top: 10%;
+  transform: rotate(45deg);
+}
+
+
+.arrow::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 2px;
+  top: 3px;
+  right: -6px;
+  background-color: #000000;
+  transform: rotate(-120deg);
+}
+
+.arrow::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 2px;
+  top: 3px;
+  right: -2px;
+  background-color: #000000;
+  transform: rotate(120deg);
+}
