@@ -7,9 +7,6 @@ const Watch = ({ watch, onDeleteWatch }) => {
 
   const [time, setTime] = useState(null);
 
-  let hourStyles;
-  let minutesStyles;
-  let secondsStyles;
   useEffect(() => {
     let currentDate = startDate;
     const intervalId = setInterval(() => {
@@ -30,6 +27,10 @@ const Watch = ({ watch, onDeleteWatch }) => {
       clearInterval(intervalId);
     };
   });
+
+  let hourStyles;
+  let minutesStyles;
+  let secondsStyles;
 
   if (!!time) {
     hourStyles = {
