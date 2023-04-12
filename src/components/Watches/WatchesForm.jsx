@@ -13,18 +13,18 @@ const watchesFormSchema = Yup.object({
     .required("Обязательное поле"),
 });
 
-const WatchesForm = ({ onAddTimezone }) => {
+const WatchesForm = ({ onAddWatch }) => {
   const initialValues = {
     title: "",
     timezone: "",
   };
 
-  const addTimezone = (values, actions) => {
+  const addWatch = (values, actions) => {
     const { title, timezone } = values;
 
     actions.resetForm();
 
-    onAddTimezone({
+    onAddWatch({
       title,
       timezone,
       id: nanoid(),
@@ -36,7 +36,7 @@ const WatchesForm = ({ onAddTimezone }) => {
       initialValues={initialValues}
       enableReinitialize
       validationSchema={watchesFormSchema}
-      onSubmit={addTimezone}
+      onSubmit={addWatch}
     >
       <Form className="watches-form">
         <div className="form-group">
@@ -62,7 +62,7 @@ const WatchesForm = ({ onAddTimezone }) => {
 };
 
 WatchesForm.propTypes = {
-  onAddTimezone: PropTypes.func.isRequired,
+  onAddWatch: PropTypes.func.isRequired,
 };
 
 export default WatchesForm;

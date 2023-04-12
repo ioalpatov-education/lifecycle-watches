@@ -5,7 +5,7 @@ import { getStartDate } from "./utils";
 
 const Watches = () => {
   const [watches, setWatches] = useState([]);
-  const addTimezone = (newTimezone) => {
+  const addWatch = (newTimezone) => {
     const { title, timezone, id } = newTimezone;
 
     setWatches([
@@ -18,10 +18,15 @@ const Watches = () => {
     ]);
   };
 
+  const deleteWatch = (watchId) => {
+    const newWatches = watches.filter((el) => el.id !== watchId);
+    setWatches(newWatches);
+  };
+
   return (
     <div className="watches-wrapper">
-      <WatchesForm onAddTimezone={addTimezone} />
-      <WatchesList watches={watches} />
+      <WatchesForm onAddWatch={addWatch} />
+      <WatchesList watches={watches} onDeleteWatch={deleteWatch} />
     </div>
   );
 };

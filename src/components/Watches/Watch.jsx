@@ -2,7 +2,7 @@ import { Close } from "@mui/icons-material";
 import PropTypes from "prop-types";
 import { useEffect } from "react";
 
-const Watch = ({ watch }) => {
+const Watch = ({ watch, onDeleteWatch }) => {
   const { id, title, startDate } = watch;
 
   useEffect(() => {
@@ -15,7 +15,11 @@ const Watch = ({ watch }) => {
     return () => {
       clearInterval(intervalId);
     };
-  }, []);
+  });
+
+  const deleteWatch = () => {
+    onDeleteWatch(id);
+  };
 
   return (
     <div className="watch-wrapper">
@@ -25,7 +29,7 @@ const Watch = ({ watch }) => {
         <div className="watch__hand minute-hand arrow"></div>
         <div className="watch__hand hour-hand arrow"></div>
       </div>
-      <button className="watch__delete-btn">
+      <button className="watch__delete-btn" onClick={deleteWatch}>
         <Close className="delete-btn__icon" />
       </button>
     </div>
@@ -38,6 +42,7 @@ Watch.propTypes = {
     title: PropTypes.string.isRequired,
     startDate: PropTypes.instanceOf(Date).isRequired,
   }).isRequired,
+  onDeleteWatch: PropTypes.func.isRequired,
 };
 
 export default Watch;

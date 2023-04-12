@@ -1,9 +1,9 @@
 import Watch from "./Watch";
 import PropTypes from "prop-types";
 
-const WatchesList = ({ watches }) => {
+const WatchesList = ({ watches, onDeleteWatch }) => {
   const list = watches.map((watch) => {
-    return <Watch key={watch.id} watch={watch} />;
+    return <Watch key={watch.id} watch={watch} onDeleteWatch={onDeleteWatch} />;
   });
 
   return <div className="watches-list">{list}</div>;
@@ -17,6 +17,7 @@ WatchesList.propTypes = {
       startDate: PropTypes.instanceOf(Date).isRequired,
     })
   ).isRequired,
+  onDeleteWatch: PropTypes.func.isRequired,
 };
 
 export default WatchesList;
