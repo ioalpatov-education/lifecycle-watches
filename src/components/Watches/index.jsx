@@ -21,7 +21,7 @@ const Watches = () => {
   return (
     <div className="watches-wrapper">
       <WatchesForm onAddTimezone={addTimezone} />
-      <WatchesList />
+      <WatchesList watches={watches} />
     </div>
   );
 };
