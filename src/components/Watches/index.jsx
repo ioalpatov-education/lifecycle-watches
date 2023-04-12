@@ -1,12 +1,26 @@
 import WatchesForm from "./WatchesForm";
 import WatchesList from "./WatchesList";
+import { useState } from "react";
+import { getStartDate } from "./utils";
 
 const Watches = () => {
-  const addTimeZone = (newTimeZone) => {};
-  
+  const [watches, setWatches] = useState([]);
+  const addTimezone = (newTimezone) => {
+    const { title, timezone, id } = newTimezone;
+
+    setWatches([
+      ...watches,
+      {
+        id,
+        title,
+        startDate: getStartDate(timezone),
+      },
+    ]);
+  };
+
   return (
     <div className="watches-wrapper">
-      <WatchesForm onAddTimeZone={addTimeZone} />
+      <WatchesForm onAddTimezone={addTimezone} />
       <WatchesList />
     </div>
   );

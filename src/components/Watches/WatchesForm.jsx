@@ -5,32 +5,30 @@ import PropTypes from "prop-types";
 
 const watchesFormSchema = Yup.object({
   title: Yup.string().required("Обязательное поле"),
-  timeZone: Yup.string()
+  timezone: Yup.string()
     .matches(
       /^-?(((([0][0-9])|([1][0-3])):(([03][0])|([14][5])))|14:00)/,
-      "Необходимо ввести временную зону. Например: -03:00"
+      "Необходимо ввести временную зону. Например: -03:00 или 09:30"
     )
     .required("Обязательное поле"),
 });
 
-const WatchesForm = ({ onAddTimeZone }) => {
+const WatchesForm = ({ onAddTimezone }) => {
   const initialValues = {
     title: "",
-    timeZone: "",
+    timezone: "",
   };
 
-  const addTimeZone = (values, actions) => {
-    const { title, timeZone } = values;
+  const addTimezone = (values, actions) => {
+    const { title, timezone } = values;
 
     actions.resetForm();
 
-    const newTimeZone = {
+    onAddTimezone({
       title,
-      timeZone,
+      timezone,
       id: nanoid(),
-    };
-
-    onAddTimeZone(newTimeZone);
+    });
   };
 
   return (
@@ -38,7 +36,7 @@ const WatchesForm = ({ onAddTimeZone }) => {
       initialValues={initialValues}
       enableReinitialize
       validationSchema={watchesFormSchema}
-      onSubmit={addTimeZone}
+      onSubmit={addTimezone}
     >
       <Form className="watches-form">
         <div className="form-group">
@@ -49,10 +47,10 @@ const WatchesForm = ({ onAddTimeZone }) => {
           </p>
         </div>
         <div className="form-group">
-          <label htmlFor="timeZone">Временная зона</label>
-          <Field className="form-field" type="text" name="timeZone" />
+          <label htmlFor="timezone">Временная зона</label>
+          <Field className="form-field" type="text" name="timezone" />
           <p className="error-text">
-            <ErrorMessage name="timeZone" />
+            <ErrorMessage name="timezone" />
           </p>
         </div>
         <button className="watches-form__submit-btn" type="submit">
@@ -64,7 +62,7 @@ const WatchesForm = ({ onAddTimeZone }) => {
 };
 
 WatchesForm.propTypes = {
-  onAddTimeZone: PropTypes.func.isRequired,
+  onAddTimezone: PropTypes.func.isRequired,
 };
 
 export default WatchesForm;
